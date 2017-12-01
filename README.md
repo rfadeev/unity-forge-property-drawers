@@ -1,11 +1,11 @@
 # animator-state-property-drawer [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](http://mit-license.org)
-Custom propery drawer to ease animator state selection in Unity editor. Allows to select animator state name value from dropdown list.
+Custom propery drawer to ease animator state name selection in Unity editor.
 
 ![screencast](Documentation/animator-state-controller-example.gif)
 
 ## How to use
 
-Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute:
+Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor.
 
 ```csharp
 using UnityEngine;
@@ -24,7 +24,7 @@ public class AnimatorStateNameExample : MonoBehaviour
 }
 ```
 
-Currenlty property attribute works only for Animator component attached to the same game object.
+Currently property attribute works only for Animator component attached to the same game object.
 
 ## Caveats
 
