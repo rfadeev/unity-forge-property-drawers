@@ -30,13 +30,54 @@ namespace UnityForge.Editor
                 return;
             }
 
+            // User can pass null or empty string as animator field value in AnimatorStateName constructor,
+            // treat this as not set animator field - fallback to search of Animator component attached to inspected object
+            var animatorField = ((AnimatorStateName)attribute).AnimatorField;
+            if (!String.IsNullOrEmpty(animatorField))
+            {
+                var animatorProperty = property.serializedObject.FindProperty(animatorField);
+                if (animatorProperty != null)
+                {
+                    var objectReferenceValue = animatorProperty.objectReferenceValue;
+                    if (objectReferenceValue != null)
+                    {
+                        var animator = objectReferenceValue as Animator;
+                        if (animator != null)
+                        {
+                            StateNameField(position, property, animator.runtimeAnimatorController);
+                            return;
+                        }
+                        else
+                        {
+                            EditorGUI.LabelField(position, "Error: field type is not Animator");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        EditorGUI.LabelField(position, "Error: animator field is not set");
+                        return;
+                    }
+                }
+                else
+                {
+                    EditorGUI.LabelField(position, String.Format("Error: animator field {0} not found in inspected object", animatorField));
+                    return;
+                }
+            }
+
             var runtimeAnimatorController = GetRuntimeAnimatorController(property);
+            StateNameField(position, property, runtimeAnimatorController);
+        }
+
+        private static void StateNameField(Rect position, SerializedProperty property, RuntimeAnimatorController runtimeAnimatorController)
+        {
             if (runtimeAnimatorController != null)
             {
                 var animatorController = runtimeAnimatorController as AnimatorController;
                 if (animatorController != null)
                 {
-                    StateNameProperty(position, property, animatorController);
+                    StateNameButton(position, property, animatorController);
                 }
                 else
                 {
@@ -46,7 +87,7 @@ namespace UnityForge.Editor
                         animatorController = animatorOverrideController.runtimeAnimatorController as AnimatorController;
                         if (animatorController != null)
                         {
-                            StateNameProperty(position, property, animatorController);
+                            StateNameButton(position, property, animatorController);
                         }
                         else
                         {
@@ -65,7 +106,7 @@ namespace UnityForge.Editor
             }
         }
 
-        private static void StateNameProperty(Rect position, SerializedProperty property, AnimatorController animatorController)
+        private static void StateNameButton(Rect position, SerializedProperty property, AnimatorController animatorController)
         {
             var propertyStringValue = property.hasMultipleDifferentValues ? "-" : property.stringValue;
             var content = String.IsNullOrEmpty(propertyStringValue) ? new GUIContent("<None>") : new GUIContent(propertyStringValue);

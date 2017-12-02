@@ -5,7 +5,7 @@ Custom propery drawer to ease animator state name selection in Unity editor.
 
 ## How to use
 
-Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor.
+Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor if Animator component is attached to inspected object.
 
 ```csharp
 using UnityEngine;
@@ -24,7 +24,29 @@ public class AnimatorStateNameExample : MonoBehaviour
 }
 ```
 
-Currently property attribute works only for Animator component attached to the same game object.
+For the case of animator component field use `animatorField` constructor parameter.
+
+```csharp
+using UnityEngine;
+using UnityForge;
+
+public class AnimatorFieldExample : MonoBehaviour
+{
+    [SerializeField]
+    private Animator exampleAnimator;
+
+    [SerializeField, AnimatorStateName(animatorField: "exampleAnimator")]
+    private string stateName;
+
+    private void Start()
+    {
+        if (exampleAnimator != null)
+        {
+            exampleAnimator.Play(stateName);
+        }
+    }
+}
+```
 
 ## Caveats
 
