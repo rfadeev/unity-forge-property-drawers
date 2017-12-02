@@ -30,19 +30,48 @@ namespace UnityForge.Editor
                 return;
             }
 
-            var animatorController = GetAnimatorController(property);
-            if (animatorController != null)
+            var runtimeAnimatorController = GetRuntimeAnimatorController(property);
+            if (runtimeAnimatorController != null)
             {
-                var propertyStringValue = property.hasMultipleDifferentValues ? "-" : property.stringValue;
-                var content = String.IsNullOrEmpty(propertyStringValue) ? new GUIContent("<None>") : new GUIContent(propertyStringValue);
-                if (GUI.Button(position, content, EditorStyles.popup))
+                var animatorController = runtimeAnimatorController as AnimatorController;
+                if (animatorController != null)
                 {
-                    StateSelector(property, animatorController);
+                    StateNameProperty(position, property, animatorController);
+                }
+                else
+                {
+                    var animatorOverrideController = runtimeAnimatorController as AnimatorOverrideController;
+                    if (animatorOverrideController != null)
+                    {
+                        animatorController = animatorOverrideController.runtimeAnimatorController as AnimatorController;
+                        if (animatorController != null)
+                        {
+                            StateNameProperty(position, property, animatorController);
+                        }
+                        else
+                        {
+                            EditorGUI.LabelField(position, String.Format("Error: not supported type of overridden controller {0} for AnimatorStateName attribute", animatorController.GetType()));
+                        }
+                    }
+                    else
+                    {
+                        EditorGUI.LabelField(position, String.Format("Error: not supported type of controller {0} for AnimatorStateName attribute", runtimeAnimatorController.GetType()));
+                    }
                 }
             }
             else
             {
                 EditorGUI.LabelField(position, "Error: animator controller not found for AnimatorStateName attribute");
+            }
+        }
+
+        private static void StateNameProperty(Rect position, SerializedProperty property, AnimatorController animatorController)
+        {
+            var propertyStringValue = property.hasMultipleDifferentValues ? "-" : property.stringValue;
+            var content = String.IsNullOrEmpty(propertyStringValue) ? new GUIContent("<None>") : new GUIContent(propertyStringValue);
+            if (GUI.Button(position, content, EditorStyles.popup))
+            {
+                StateSelector(property, animatorController);
             }
         }
 
@@ -71,7 +100,7 @@ namespace UnityForge.Editor
             clickedItem.property.serializedObject.ApplyModifiedProperties();
         }
 
-        private static AnimatorController GetAnimatorController(SerializedProperty property)
+        private static RuntimeAnimatorController GetRuntimeAnimatorController(SerializedProperty property)
         {
             var component = property.serializedObject.targetObject as Component;
             if (component == null)
@@ -87,7 +116,7 @@ namespace UnityForge.Editor
                 return null;
             }
 
-            return animator.runtimeAnimatorController as AnimatorController;
+            return animator.runtimeAnimatorController;
         }
     }
 }
