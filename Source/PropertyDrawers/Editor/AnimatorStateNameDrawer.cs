@@ -5,18 +5,6 @@ using UnityEngine;
 
 namespace UnityForge.Editor
 {
-    public struct AnimatorStateDrawerPair
-    {
-        public string str;
-        public SerializedProperty property;
-
-        public AnimatorStateDrawerPair(string str, SerializedProperty property)
-        {
-            this.str = str;
-            this.property = property;
-        }
-    }
-
     [CustomPropertyDrawer(typeof(AnimatorStateName))]
     public class AnimatorStateNameDrawer : PropertyDrawer
     {
@@ -127,18 +115,11 @@ namespace UnityForge.Editor
                     var stateName = childState.state.name;
                     menu.AddItem(new GUIContent(stateNamePrefix + stateName),
                         stateName == property.stringValue,
-                        HandleStateSelect,
-                        new AnimatorStateDrawerPair(stateName, property));
+                        StringPropertyPair.HandlePairObjectSelect,
+                        new StringPropertyPair(stateName, property));
                 }
             }
             menu.ShowAsContext();
-        }
-
-        private static void HandleStateSelect(object menuItemObject)
-        {
-            var clickedItem = (AnimatorStateDrawerPair)menuItemObject;
-            clickedItem.property.stringValue = clickedItem.str;
-            clickedItem.property.serializedObject.ApplyModifiedProperties();
         }
 
         private static RuntimeAnimatorController GetRuntimeAnimatorController(SerializedProperty property)
