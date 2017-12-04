@@ -1,9 +1,11 @@
 # animator-state-property-drawer [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](http://mit-license.org)
-Custom propery drawer to ease animator state name selection in Unity editor.
+Custom propery drawers to ease animation parameters selection in Unity editor.
+
+## Animator state name
 
 ![screencast](Documentation/animator-state-controller-example.gif)
 
-## How to use
+### Attribute usage
 
 Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor if Animator component is attached to inspected object.
 
@@ -48,6 +50,39 @@ public class AnimatorFieldExample : MonoBehaviour
 }
 ```
 
-## Caveats
+### Caveats
 
 Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animator.Play.html) from animator state name in Unity API, state name alone does not determine state and state index value should be managed separately. If only one animation layer is used, it's not the problem and `Play(string stateName)` overload can be used safely for fields using `AnimatorStateName` attribute.
+
+## Animation name
+
+![screencast](Documentation/animation-name-example.png)
+
+### Attribute usage
+
+Import `UnityForge` namespace and mark animator state name field with `AnimationName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor if Animator component is attached to inspected object.
+
+```csharp
+using UnityEngine;
+using UnityForge;
+
+
+[RequireComponent(typeof(Animation))]
+public class AnimationNameExample : MonoBehaviour
+{
+    [SerializeField, AnimationName]
+    private string animationName;
+
+    private void Start()
+    {
+        var animation = GetComponent<Animation>();
+        animation.Play(animationName);
+    }
+}
+```
+
+### Caveats
+
+Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtilityGetAnimationClips.html) differs from the one displayed in the editor.
+
+Currently `AnimationName` attribute does not support Animation components attached not to inspected object.
