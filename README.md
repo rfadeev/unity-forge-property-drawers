@@ -60,7 +60,7 @@ Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animat
 
 ### Attribute usage
 
-Import `UnityForge` namespace and mark animator state name field with `AnimationName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor if Animator component is attached to inspected object.
+Import `UnityForge` namespace and mark animation name field with `AnimationName` attribute. After that you will be able to select animation name value from dropdown list in Unity editor if Animation component is attached to inspected object.
 
 ```csharp
 using UnityEngine;
