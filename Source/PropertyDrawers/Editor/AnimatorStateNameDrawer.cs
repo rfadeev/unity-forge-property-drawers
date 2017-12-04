@@ -18,7 +18,7 @@ namespace UnityForge.Editor
     }
 
     [CustomPropertyDrawer(typeof(AnimatorStateName))]
-    public class AnimatorStateDrawer : PropertyDrawer
+    public class AnimatorStateNameDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

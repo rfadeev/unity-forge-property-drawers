@@ -2,7 +2,7 @@
 
 namespace UnityForge
 {
-    public class AnimatorFieldExample : MonoBehaviour
+    public class AnimatorStateNameExample02 : MonoBehaviour
     {
         [SerializeField]
         private Animator exampleAnimator;
