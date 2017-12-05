@@ -19,10 +19,46 @@ namespace UnityForge.Editor
                 return;
             }
 
+            // User can pass null or empty string as animation field value in AnimationName constructor,
+            // treat this as not set animation field - fallback to search of Animation component attached to inspected object
+            var animationField = ((AnimationName)attribute).AnimationField;
+            if (!String.IsNullOrEmpty(animationField))
+            {
+                var animationProperty = property.serializedObject.FindProperty(animationField);
+                if (animationProperty != null)
+                {
+                    var objectReferenceValue = animationProperty.objectReferenceValue;
+                    if (objectReferenceValue != null)
+                    {
+                        var animationReference = objectReferenceValue as Animation;
+                        if (animationReference != null)
+                        {
+                            StateNameButton(position, property, animationReference);
+                            return;
+                        }
+                        else
+                        {
+                            EditorGUI.LabelField(position, "Error: field type is not Animation");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        EditorGUI.LabelField(position, "Error: animation field is not set");
+                        return;
+                    }
+                }
+                else
+                {
+                    EditorGUI.LabelField(position, String.Format("Error: animator field {0} not found in inspected object", animationField));
+                    return;
+                }
+            }
+
             var component = property.serializedObject.targetObject as Component;
             if (component == null)
             {
-                EditorGUI.LabelField(position, "Error: missing Animation component in inspected object");
+                EditorGUI.LabelField(position, "Error: inspected object type is not Component");
                 return;
             }
 

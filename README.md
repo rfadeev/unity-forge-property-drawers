@@ -81,8 +81,30 @@ public class AnimationNameExample : MonoBehaviour
 }
 ```
 
+For the case of animation component field use `animationField` constructor parameter.
+
+```csharp
+using UnityEngine;
+using UnityForge;
+
+public class AnimationFieldExample : MonoBehaviour
+{
+    [SerializeField]
+    private Animation exampleAnimation;
+
+    [SerializeField, AnimationName(animationField: "exampleAnimation")]
+    private string animationName;
+
+    private void Start()
+    {
+        if (exampleAnimation != null)
+        {
+            exampleAnimation.Play(animationName);
+        }
+    }
+}
+```
+
 ### Caveats
 
 Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtilityGetAnimationClips.html) differs from the one displayed in the editor.
-
-Currently `AnimationName` attribute does not support Animation components attached not to inspected object.
