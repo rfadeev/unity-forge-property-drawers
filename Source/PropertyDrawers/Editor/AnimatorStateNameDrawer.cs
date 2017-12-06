@@ -29,10 +29,10 @@ namespace UnityForge.Editor
                     var objectReferenceValue = animatorProperty.objectReferenceValue;
                     if (objectReferenceValue != null)
                     {
-                        var animator = objectReferenceValue as Animator;
-                        if (animator != null)
+                        var animatorReference = objectReferenceValue as Animator;
+                        if (animatorReference != null)
                         {
-                            StateNameField(position, property, animator.runtimeAnimatorController);
+                            StateNameField(position, property, animatorReference.runtimeAnimatorController);
                             return;
                         }
                         else
@@ -54,8 +54,21 @@ namespace UnityForge.Editor
                 }
             }
 
-            var runtimeAnimatorController = GetRuntimeAnimatorController(property);
-            StateNameField(position, property, runtimeAnimatorController);
+            var component = property.serializedObject.targetObject as Component;
+            if (component == null)
+            {
+                EditorGUI.LabelField(position, "Error: inspected object type is not Component");
+                return;
+            }
+
+            var animator = component.GetComponent<Animator>();
+            if (animator == null)
+            {
+                EditorGUI.LabelField(position, "Error: missing Animator component in inspected object");
+                return;
+            }
+
+            StateNameField(position, property, animator.runtimeAnimatorController);
         }
 
         private static void StateNameField(Rect position, SerializedProperty property, RuntimeAnimatorController runtimeAnimatorController)
@@ -120,25 +133,6 @@ namespace UnityForge.Editor
                 }
             }
             menu.ShowAsContext();
-        }
-
-        private static RuntimeAnimatorController GetRuntimeAnimatorController(SerializedProperty property)
-        {
-            var component = property.serializedObject.targetObject as Component;
-            if (component == null)
-            {
-                Debug.LogError("Inspected object type is not Component");
-                return null;
-            }
-
-            var animator = component.GetComponent<Animator>();
-            if (animator == null)
-            {
-                Debug.LogError("Missing Animator component in inspected object");
-                return null;
-            }
-
-            return animator.runtimeAnimatorController;
         }
     }
 }
