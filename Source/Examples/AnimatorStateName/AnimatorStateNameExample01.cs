@@ -3,7 +3,7 @@
 namespace UnityForge
 {
     [RequireComponent(typeof(Animator))]
-    public class AnimatorStateControllerExample01 : MonoBehaviour
+    public class AnimatorStateNameExample01 : MonoBehaviour
     {
         [SerializeField, AnimatorStateName]
         private string stateName;
