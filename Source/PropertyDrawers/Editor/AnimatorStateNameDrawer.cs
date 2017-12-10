@@ -6,8 +6,12 @@ using UnityEngine;
 namespace UnityForge.Editor
 {
     [CustomPropertyDrawer(typeof(AnimatorStateName))]
-    public class AnimatorStateNameDrawer : ComponentStringFieldPropertyDrawer<AnimatorStateName, Animator>
+    public class AnimatorStateNameDrawer : ComponentFieldPropertyDrawer<AnimatorStateName, Animator>
     {
+        public AnimatorStateNameDrawer() : base(SerializedPropertyType.String)
+        {
+        }
+
         protected override string GetPropertyPath(AnimatorStateName attribute)
         {
             return attribute.AnimatorField;

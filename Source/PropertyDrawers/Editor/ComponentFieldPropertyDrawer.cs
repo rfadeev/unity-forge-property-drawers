@@ -6,17 +6,24 @@ namespace UnityForge.Editor
 {
     // Base class for property drawers for string properties which require component of specific type
     // with component field optionally specified by attribute
-    public abstract class ComponentStringFieldPropertyDrawer<TAttribute, TComponent> : PropertyDrawer
+    public abstract class ComponentFieldPropertyDrawer<TAttribute, TComponent> : PropertyDrawer
         where TAttribute : PropertyAttribute
         where TComponent : Component
     {
+        private SerializedPropertyType propertyType_;
+
+        protected ComponentFieldPropertyDrawer(SerializedPropertyType propertyType)
+        {
+            propertyType_ = propertyType;
+        }
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             position = EditorGUI.PrefixLabel(position, label);
 
-            if (property.propertyType != SerializedPropertyType.String)
+            if (property.propertyType != propertyType_)
             {
-                EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to String type", typeof(TAttribute)));
+                EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(TAttribute), propertyType_));
                 return;
             }
 
