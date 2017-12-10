@@ -1,13 +1,23 @@
-# animator-state-property-drawer [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](http://mit-license.org)
-Custom propery drawers to ease animation parameters selection in Unity editor.
+# Unity Forge Property Drawers [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](http://mit-license.org)
+Custom propery drawers to ease fields value management in Unity editor.
 
-## Animator state name
+## Attributes list
+
+* [AnimatorStateName](#animatorstatename)
+* [AnimatorLayerName](#animatorlayername)
+* [AnimationName](#animationname)
+
+## Attributes usage
+
+Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list)
+
+## AnimatorStateName
 
 ![screencast](Documentation/animator-state-controller-example.gif)
 
 ### Attribute usage
 
-Import `UnityForge` namespace and mark animator state name field with `AnimatorStateName` attribute. After that you will be able to select animator state name value from dropdown list in Unity editor if Animator component is attached to inspected object.
+Add attribute to string field to enable selection of animator state name value from dropdown list in Unity editor. Attribute without parameters works on Animator component attached to inspected object. Specify animator component via `animatorField` constructor parameter to enable state name selection from that component.
 
 ```csharp
 using UnityEngine;
@@ -25,8 +35,6 @@ public class AnimatorStateNameExample : MonoBehaviour
     }
 }
 ```
-
-For the case of animator component field use `animatorField` constructor parameter.
 
 ```csharp
 using UnityEngine;
@@ -54,13 +62,39 @@ public class AnimatorFieldExample : MonoBehaviour
 
 Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animator.Play.html) from animator state name in Unity API, state name alone does not determine state and state index value should be managed separately. If only one animation layer is used, it's not the problem and `Play(string stateName)` overload can be used safely for fields using `AnimatorStateName` attribute.
 
-## Animation name
+## AnimatorLayerName
+
+```csharp
+using UnityEngine;
+using UnityForge;
+
+public class AnimatorLayerName : MonoBehaviour
+{
+    [SerializeField, AnimatorStateName]
+    private string stateName;
+
+    [SerializeField, AnimatorLayerName]
+    private string layerName;
+
+    private void Start()
+    {
+        var animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            var layerIndex = animator.GetLayerIndex(layerName);
+            animator.Play(stateName, layerIndex);
+        }
+    }
+}
+```
+
+## AnimationName
 
 ![screencast](Documentation/animation-name-example.png)
 
 ### Attribute usage
 
-Import `UnityForge` namespace and mark animation name field with `AnimationName` attribute. After that you will be able to select animation name value from dropdown list in Unity editor if Animation component is attached to inspected object.
+Add attribute to string field to enable selection of animation name value from dropdown list in Unity editor. Attribute without parameters works on Animation component attached to inspected object. Specify animator component via `animationField` constructor parameter to enable state name selection from that component.
 
 ```csharp
 using UnityEngine;
@@ -80,8 +114,6 @@ public class AnimationNameExample : MonoBehaviour
     }
 }
 ```
-
-For the case of animation component field use `animationField` constructor parameter.
 
 ```csharp
 using UnityEngine;
