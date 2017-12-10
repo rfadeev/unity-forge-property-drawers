@@ -6,73 +6,16 @@ using UnityEngine;
 namespace UnityForge.Editor
 {
     [CustomPropertyDrawer(typeof(AnimatorStateName))]
-    public class AnimatorStateNameDrawer : PropertyDrawer
+    public class AnimatorStateNameDrawer : ComponentStringFieldPropertyDrawer<AnimatorStateName, Animator>
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        protected override string GetPropertyPath(AnimatorStateName attribute)
         {
-            position = EditorGUI.PrefixLabel(position, label);
-
-            if (property.propertyType != SerializedPropertyType.String)
-            {
-                EditorGUI.LabelField(position, "Error: AnimatorStateName attribute can be applied only to string type");
-                return;
-            }
-
-            // User can pass null or empty string as animator field value in AnimatorStateName constructor,
-            // treat this as not set animator field - fallback to search of Animator component attached to inspected object
-            var animatorField = ((AnimatorStateName)attribute).AnimatorField;
-            if (!String.IsNullOrEmpty(animatorField))
-            {
-                var animatorProperty = property.serializedObject.FindProperty(animatorField);
-                if (animatorProperty != null)
-                {
-                    var objectReferenceValue = animatorProperty.objectReferenceValue;
-                    if (objectReferenceValue != null)
-                    {
-                        var animatorReference = objectReferenceValue as Animator;
-                        if (animatorReference != null)
-                        {
-                            StateNameField(position, property, animatorReference.runtimeAnimatorController);
-                            return;
-                        }
-                        else
-                        {
-                            EditorGUI.LabelField(position, "Error: field type is not Animator");
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        EditorGUI.LabelField(position, "Error: animator field is not set");
-                        return;
-                    }
-                }
-                else
-                {
-                    EditorGUI.LabelField(position, String.Format("Error: animator field {0} not found in inspected object", animatorField));
-                    return;
-                }
-            }
-
-            var component = property.serializedObject.targetObject as Component;
-            if (component == null)
-            {
-                EditorGUI.LabelField(position, "Error: inspected object type is not Component");
-                return;
-            }
-
-            var animator = component.GetComponent<Animator>();
-            if (animator == null)
-            {
-                EditorGUI.LabelField(position, "Error: missing Animator component in inspected object");
-                return;
-            }
-
-            StateNameField(position, property, animator.runtimeAnimatorController);
+            return attribute.AnimatorField;
         }
 
-        private static void StateNameField(Rect position, SerializedProperty property, RuntimeAnimatorController runtimeAnimatorController)
+        protected override void DrawComponentProperty(Rect position, SerializedProperty property, Animator animator)
         {
+            var runtimeAnimatorController = animator.runtimeAnimatorController;
             if (runtimeAnimatorController != null)
             {
                 var animatorController = runtimeAnimatorController as AnimatorController;
