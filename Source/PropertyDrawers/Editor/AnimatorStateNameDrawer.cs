@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UnityForge.Editor
 {
     [CustomPropertyDrawer(typeof(AnimatorStateName))]
-    public class AnimatorStateNameDrawer : ComponentFieldPropertyDrawer<AnimatorStateName, Animator>
+    public class AnimatorStateNameDrawer : RuntimeAnimatorControllerPropertyDrawer<AnimatorStateName>
     {
         public AnimatorStateNameDrawer() : base(SerializedPropertyType.String)
         {
@@ -17,44 +17,7 @@ namespace UnityForge.Editor
             return attribute.AnimatorField;
         }
 
-        protected override void DrawComponentProperty(Rect position, SerializedProperty property, Animator animator)
-        {
-            var runtimeAnimatorController = animator.runtimeAnimatorController;
-            if (runtimeAnimatorController != null)
-            {
-                var animatorController = runtimeAnimatorController as AnimatorController;
-                if (animatorController != null)
-                {
-                    StateNameButton(position, property, animatorController);
-                }
-                else
-                {
-                    var animatorOverrideController = runtimeAnimatorController as AnimatorOverrideController;
-                    if (animatorOverrideController != null)
-                    {
-                        animatorController = animatorOverrideController.runtimeAnimatorController as AnimatorController;
-                        if (animatorController != null)
-                        {
-                            StateNameButton(position, property, animatorController);
-                        }
-                        else
-                        {
-                            EditorGUI.LabelField(position, String.Format("Error: not supported type of overridden controller {0} for AnimatorStateName attribute", animatorController.GetType()));
-                        }
-                    }
-                    else
-                    {
-                        EditorGUI.LabelField(position, String.Format("Error: not supported type of controller {0} for AnimatorStateName attribute", runtimeAnimatorController.GetType()));
-                    }
-                }
-            }
-            else
-            {
-                EditorGUI.LabelField(position, "Error: animator controller not found for AnimatorStateName attribute");
-            }
-        }
-
-        private static void StateNameButton(Rect position, SerializedProperty property, AnimatorController animatorController)
+        protected override void DrawAnimatorControllerProperty(Rect position, SerializedProperty property, AnimatorController animatorController)
         {
             var propertyStringValue = property.hasMultipleDifferentValues ? "-" : property.stringValue;
             var content = String.IsNullOrEmpty(propertyStringValue) ? new GUIContent("<None>") : new GUIContent(propertyStringValue);
