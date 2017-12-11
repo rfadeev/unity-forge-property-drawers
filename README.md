@@ -5,6 +5,8 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [AnimationName](#animationname)
 * [AnimatorLayerName](#animatorlayername)
 * [AnimatorStateName](#animatorstatename)
+* [GameObjectLayer](#gameobjectlayer)
+* [GameObjectTag](#gameobjecttag)
 
 ## Attributes usage
 Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list)
@@ -71,3 +73,25 @@ private string exampleStateName;
 
 ### Caveats
 Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animator.Play.html) from animator state name in Unity API, state name alone does not determine state and state index value should be managed separately. If only one animation layer is used, it's not the problem and `Play(string stateName)` overload can be used safely for fields using `AnimatorStateName` attribute.
+
+## GameObjectLayer
+![screencast](Documentation/game-object-layer-example.png)
+
+### Attribute usage
+Add attribute to int field to enable selection of game object layer value from dropdown list in Unity editor.
+```csharp
+[SerializeField, GameObjectLayer]
+private int exampleLayer;
+```
+[Examples of attribute usage](../master/Source/Examples/GameObjectLayer)
+
+## GameObjectTag
+![screencast](Documentation/game-object-tag-example.png)
+
+### Attribute usage
+Add attribute to string field to enable selection of game object tag value from dropdown list in Unity editor.
+```csharp
+[SerializeField, GameObjectTag]
+private string exampleTag;
+```
+[Examples of attribute usage](../master/Source/Examples/GameObjectTag)
