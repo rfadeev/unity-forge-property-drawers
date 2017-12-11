@@ -7,6 +7,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [AnimatorStateName](#animatorstatename)
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
+* [SortingLayerName](#sortginlayername)
 
 ## Attributes usage
 Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list)
@@ -78,7 +79,7 @@ Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animat
 ![screencast](Documentation/game-object-layer-example.png)
 
 ### Attribute usage
-Add attribute to int field to enable selection of game object layer value from dropdown list in Unity editor.
+Add attribute to int field to enable selection of game object layer value from dropdown list in Unity editor. Layers are configured in [Tags and Layers Manager](https://docs.unity3d.com/Manual/class-TagManager.html).
 ```csharp
 [SerializeField, GameObjectLayer]
 private int exampleLayer;
@@ -89,9 +90,21 @@ private int exampleLayer;
 ![screencast](Documentation/game-object-tag-example.png)
 
 ### Attribute usage
-Add attribute to string field to enable selection of game object tag value from dropdown list in Unity editor.
+Add attribute to string field to enable selection of game object tag value from dropdown list in Unity editor. Tags are configured in [Tags and Layers Manager](https://docs.unity3d.com/Manual/class-TagManager.html).
 ```csharp
 [SerializeField, GameObjectTag]
 private string exampleTag;
 ```
 [Examples of attribute usage](../master/Source/Examples/GameObjectTag)
+
+## SortingLayerName
+![screencast](Documentation/sorting-layer-name-example.png)
+
+### Attribute usage
+Add attribute to string field to enable selection of sortgin layer name value from dropdown list in Unity editor. Sorting layers are configured in [Tags and Layers Manager](https://docs.unity3d.com/Manual/class-TagManager.html).
+```csharp
+[SerializeField, SortingLayerName]
+private string exampleSortingLayerName;
+```
+
+[Examples of attribute usage](../master/Source/Examples/SortingLayerName)
