@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityForge;
 
-[CustomPropertyDrawer(typeof(GameObjectLayer))]
+[CustomPropertyDrawer(typeof(GameObjectLayerAttribute))]
 public class GameObjectLayerDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -11,7 +11,7 @@ public class GameObjectLayerDrawer : PropertyDrawer
         if (property.propertyType != SerializedPropertyType.Integer)
         {
             position = EditorGUI.PrefixLabel(position, label);
-            EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(GameObjectLayer), SerializedPropertyType.Integer));
+            EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(GameObjectLayerAttribute), SerializedPropertyType.Integer));
             return;
         }
 

@@ -4,11 +4,11 @@ using UnityEngine;
 namespace UnityForge
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class AnimationName : PropertyAttribute
+    public class AnimationNameAttribute : PropertyAttribute
     {
         public string AnimationField { get; private set; }
 
-        public AnimationName(string animationField = null)
+        public AnimationNameAttribute(string animationField = null)
         {
             AnimationField = animationField;
         }

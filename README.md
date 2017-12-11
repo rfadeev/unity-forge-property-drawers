@@ -7,7 +7,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [AnimatorStateName](#animatorstatename)
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
-* [SortingLayerName](#sortginlayername)
+* [SortingLayerName](#sortinglayername)
 
 ## Attributes usage
 Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list)

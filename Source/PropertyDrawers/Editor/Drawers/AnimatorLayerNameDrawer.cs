@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace UnityForge.Editor
 {
-    [CustomPropertyDrawer(typeof(AnimatorLayerName))]
-    public class AnimatorLayerNameDrawer : RuntimeAnimatorControllerPropertyDrawer<AnimatorLayerName>
+    [CustomPropertyDrawer(typeof(AnimatorLayerNameAttribute))]
+    public class AnimatorLayerNameDrawer : RuntimeAnimatorControllerPropertyDrawer<AnimatorLayerNameAttribute>
     {
         public AnimatorLayerNameDrawer() : base(SerializedPropertyType.String)
         {
         }
 
-        protected override string GetPropertyPath(AnimatorLayerName attribute)
+        protected override string GetPropertyPath(AnimatorLayerNameAttribute attribute)
         {
             return attribute.AnimatorField;
         }

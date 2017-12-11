@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace UnityForge.Editor
 {
-    [CustomPropertyDrawer(typeof(AnimationName))]
-    public class AnimationNameDrawer : ComponentFieldPropertyDrawer<AnimationName, Animation>
+    [CustomPropertyDrawer(typeof(AnimationNameAttribute))]
+    public class AnimationNameDrawer : ComponentFieldPropertyDrawer<AnimationNameAttribute, Animation>
     {
         public AnimationNameDrawer() : base(SerializedPropertyType.String)
         {
         }
 
-        protected override string GetPropertyPath(AnimationName attribute)
+        protected override string GetPropertyPath(AnimationNameAttribute attribute)
         {
             return attribute.AnimationField;
         }

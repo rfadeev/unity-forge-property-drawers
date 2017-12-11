@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityForge
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class GameObjectLayer : PropertyAttribute
+    public class GameObjectLayerAttribute : PropertyAttribute
     {
     }
 }
