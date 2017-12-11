@@ -36,6 +36,8 @@ private string animationName;
 Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtilityGetAnimationClips.html) differs from the one displayed in the editor for Animation comoponent. Due to this expect different order of items in dropdown list for attribute.
 
 ## AnimatorLayerName
+![screencast](Documentation/animator-layer-name-example.png)
+
 Add attribute to string field to enable selection of animator layer name value from dropdown list in Unity editor. Attribute without parameters works on Animator component attached to inspected object.
 ```csharp
 [SerializeField, AnimatorLayerName]
@@ -53,7 +55,7 @@ private string exampleLayerName;
 [Examples of attribute usage](../master/Source/Examples/AnimatorLayerName)
 
 ## AnimatorStateName
-![screencast](Documentation/animator-state-controller-example.gif)
+![screencast](Documentation/animator-state-name-example.gif)
 
 ### Attribute usage
 Add attribute to string field to enable selection of animator state name value from dropdown list in Unity editor. Attribute without parameters works on Animator component attached to inspected object.
