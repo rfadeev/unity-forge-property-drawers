@@ -4,6 +4,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 ## Attributes list
 * [AnimationName](#animationname)
 * [AnimatorLayerName](#animatorlayername)
+* [AnimatorParameterName](#animatorparametername)
 * [AnimatorStateName](#animatorstatename)
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
@@ -53,6 +54,26 @@ private string exampleLayerName;
 ```
 
 [Examples of attribute usage](../master/Source/Examples/AnimatorLayerName)
+
+## AnimatorParameterName
+![screencast](Documentation/animator-parameter-name-example.png)
+
+Add attribute to string field to enable selection of animator parameter name value from dropdown list in Unity editor. Note that parameter type must be specified for attribute. Attribute without other parameters works on Animator component attached to inspected object.
+```csharp
+[SerializeField, AnimatorParameterName(AnimatorControllerParameterType.Float)]
+private string exampleFloatParameterName;
+```
+
+Specify Animator component via `animatorField` constructor parameter to enable parameter name selection from that Animator component.
+```csharp
+[SerializeField]
+private Animator exampleAnimator;
+[SerializeField]
+[AnimatorParameterName(AnimatorControllerParameterType.Float, animatorField: "exampleAnimator"))]
+private string exampleFloatParameterName;
+```
+
+[Examples of attribute usage](../master/Source/Examples/AnimatorParameterName)
 
 ## AnimatorStateName
 ![screencast](Documentation/animator-state-name-example.gif)

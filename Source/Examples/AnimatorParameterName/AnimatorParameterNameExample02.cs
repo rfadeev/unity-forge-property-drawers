@@ -9,28 +9,28 @@ namespace UnityForge
 
         [SerializeField]
         [AnimatorParameterName(AnimatorControllerParameterType.Float, animatorField: "exampleAnimator")]
-        private string exampleFloatParameter;
+        private string exampleFloatParameterName;
 
         [SerializeField]
         [AnimatorParameterName(AnimatorControllerParameterType.Int, animatorField: "exampleAnimator")]
-        private string exampleIntParameter;
+        private string exampleIntParameterName;
 
         [SerializeField]
         [AnimatorParameterName(AnimatorControllerParameterType.Bool, animatorField: "exampleAnimator")]
-        private string exampleBoolParameter;
+        private string exampleBoolParameterName;
 
         [SerializeField]
         [AnimatorParameterName(AnimatorControllerParameterType.Trigger, animatorField: "exampleAnimator")]
-        private string exampleTriggerParameter;
+        private string exampleTriggerParameterName;
 
         private void Start()
         {
             if (exampleAnimator != null)
             {
-                Debug.LogFormat("Example float parameter value: {0}", exampleAnimator.GetFloat(exampleFloatParameter));
-                Debug.LogFormat("Example int parameter value: {0}", exampleAnimator.GetInteger(exampleIntParameter));
-                Debug.LogFormat("Example bool parameter value: {0}", exampleAnimator.GetBool(exampleBoolParameter));
-                exampleAnimator.SetTrigger(exampleTriggerParameter);
+                Debug.LogFormat("Example float parameter value: {0}", exampleAnimator.GetFloat(exampleFloatParameterName));
+                Debug.LogFormat("Example int parameter value: {0}", exampleAnimator.GetInteger(exampleIntParameterName));
+                Debug.LogFormat("Example bool parameter value: {0}", exampleAnimator.GetBool(exampleBoolParameterName));
+                exampleAnimator.SetTrigger(exampleTriggerParameterName);
             }
         }
     }
