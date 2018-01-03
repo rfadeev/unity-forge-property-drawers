@@ -9,9 +9,10 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
 * [SortingLayerName](#sortinglayername)
+* [SpriteAtlasSpriteName](#spriteatlasspritename)
 
 ## Attributes usage
-Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list)
+Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list).
 
 ## AnimationName
 ![screencast](Documentation/animation-name-example.png)
@@ -124,10 +125,24 @@ private string exampleTag;
 ![screencast](Documentation/sorting-layer-name-example.png)
 
 ### Attribute usage
-Add attribute to string field to enable selection of sortgin layer name value from dropdown list in Unity editor. Sorting layers are configured in [Tags and Layers Manager](https://docs.unity3d.com/Manual/class-TagManager.html).
+Add attribute to string field to enable selection of sorting layer name value from dropdown list in Unity editor. Sorting layers are configured in [Tags and Layers Manager](https://docs.unity3d.com/Manual/class-TagManager.html).
 ```csharp
 [SerializeField, SortingLayerName]
 private string exampleSortingLayerName;
 ```
 
 [Examples of attribute usage](../master/Source/Examples/SortingLayerName)
+
+## SpriteAtlasSpriteName
+![screencast](Documentation/sprite-atlas-sprite-name.png)
+
+### Attribute usage
+Add attribute to string field and specify sprite atlas field to enable selection of sprite name from that atlas via dropdown list in Unity editor.
+```csharp
+[SerializeField]
+private SpriteAtlas atlas;
+[SerializeField, SpriteAtlasSpriteName(spriteAtlasField: "atlas")]
+private string spriteName;
+```
+
+[Examples of attribute usage](../master/Source/Examples/SpriteAtlasSpriteName)
