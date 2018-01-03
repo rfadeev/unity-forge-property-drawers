@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace UnityForge.Editor
 {
-    // Base class for property drawers for string properties which require component of specific type
-    // with component field optionally specified by attribute
+    /// <summary>
+    /// Base class for property drawers for string properties which require component of specific type
+    /// with component field optionally specified by attribute
+    /// </summary>
     public abstract class ComponentFieldPropertyDrawer<TAttribute, TComponent> : PropertyDrawer
         where TAttribute : PropertyAttribute
         where TComponent : Component
@@ -32,35 +34,9 @@ namespace UnityForge.Editor
             var field = GetPropertyPath((TAttribute)attribute);
             if (!String.IsNullOrEmpty(field))
             {
-                var fieldProperty = property.serializedObject.FindProperty(field);
-                if (fieldProperty != null)
-                {
-                    var fieldObjectReferenceValue = fieldProperty.objectReferenceValue;
-                    if (fieldObjectReferenceValue != null)
-                    {
-                        var componentReference = fieldObjectReferenceValue as TComponent;
-                        if (componentReference != null)
-                        {
-                            DrawComponentProperty(position, property, componentReference);
-                            return;
-                        }
-                        else
-                        {
-                            EditorGUI.LabelField(position, String.Format("Error: field type is not {0}", typeof(TComponent)));
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        EditorGUI.LabelField(position, String.Format("Error: {0} field is not set", typeof(TComponent)));
-                        return;
-                    }
-                }
-                else
-                {
-                    EditorGUI.LabelField(position, String.Format("Error: {0} field {1} not found in inspected object", typeof(TComponent), field));
-                    return;
-                }
+                ObjectFieldPropertyDrawerUtils.DrawObjectFieldPoperty<TComponent>(
+                    position, property, field, DrawComponentProperty);
+                return;
             }
 
             var inspectedObjectComponent = property.serializedObject.targetObject as Component;
