@@ -134,7 +134,7 @@ private string exampleSortingLayerName;
 [Examples of attribute usage](../master/Source/Examples/SortingLayerName)
 
 ## SpriteAtlasSpriteName
-![screencast](Documentation/sprite-atlas-sprite-name.png)
+![screencast](Documentation/sprite-atlas-sprite-name-example.png)
 
 ### Attribute usage
 Add attribute to string field and specify sprite atlas field to enable selection of sprite name from that atlas via dropdown list in Unity editor.
