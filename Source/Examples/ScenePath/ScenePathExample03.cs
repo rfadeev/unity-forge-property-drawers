@@ -13,7 +13,7 @@ namespace UnityForge
 
 #if UNITY_EDITOR
         [ContextMenu("Open Scene At Path")]
-        private void OpenExampleScene()
+        private void OpenSceneAtPath()
         {
             // Executing this method in Unity 2017.1.1f1 results in console message
             // "Assertion failed: Assertion failed on expression: 'm_InstanceID != InstanceID_None'"
@@ -21,13 +21,13 @@ namespace UnityForge
         }
 
         [ContextMenu("Open Scene At Path Additive")]
-        private void OpenExampleSceneAdditive()
+        private void OpenSceneAtPathAdditive()
         {
             EditorSceneManager.OpenScene(exampleScenePath, OpenSceneMode.Additive);
         }
 
         [ContextMenu("Ping Scene At Path")]
-        private void PingExampleScene()
+        private void PingSceneAtPath()
         {
             var exampleSceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(exampleScenePath);
             EditorGUIUtility.PingObject(exampleSceneAsset);
