@@ -33,7 +33,6 @@ namespace UnityForge.Editor
 
             if (EditorGUI.EndChangeCheck() && index >= 0)
             {
-                Debug.Log("Assing");
                 property.stringValue = scenePaths[index];
                 property.serializedObject.ApplyModifiedProperties();
             }

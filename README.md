@@ -8,6 +8,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [AnimatorStateName](#animatorstatename)
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
+* [ScenePath](#scenepath)
 * [SortingLayerName](#sortinglayername)
 * [SpriteAtlasSpriteName](#spriteatlasspritename)
 
@@ -120,6 +121,18 @@ Add attribute to string field to enable selection of game object tag value from 
 private string exampleTag;
 ```
 [Examples of attribute usage](../master/Source/Examples/GameObjectTag)
+
+## ScenePath
+![screencast](Documentation/scene-path-example.png)
+
+### Attribute usage
+Add attribute to string field to enable selection of scene path value from dropdown list in Unity editor.
+```csharp
+[SerializeField, ScenePath]
+private string exampleScenePath;
+```
+
+[Examples of attribute usage](../master/Source/Examples/ScenePath)
 
 ## SortingLayerName
 ![screencast](Documentation/sorting-layer-name-example.png)
