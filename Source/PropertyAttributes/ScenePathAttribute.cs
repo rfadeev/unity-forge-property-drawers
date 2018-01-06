@@ -10,11 +10,11 @@ namespace UnityForge
     public class ScenePathAttribute : PropertyAttribute
     {
         /// <summary>
-        /// If true, path will not contain "Assets/" prefix and ".unity"
-        /// extension and can be used in SceneManager API. If false,
-        /// path will be full project path.
+        /// If true, path will be full project path like
+        /// "Assets/Scenes/MyScene.unity". If false, path will not
+        /// contain "Assets/" prefix and ".unity".
         /// </summary>
-        public bool ShortPathType { get; private set; }
+        public bool FullProjectPath { get; private set; }
 
         /// <summary>
         /// If true, only scenes from build settings will be shown
@@ -31,9 +31,9 @@ namespace UnityForge
         /// </summary>
         public bool OnlyEnabled { get; private set; }
 
-        public ScenePathAttribute(bool shortPathType = true, bool fromBuildSettings = true, bool onlyEnabled = true)
+        public ScenePathAttribute(bool fullProjectPath = true, bool fromBuildSettings = true, bool onlyEnabled = true)
         {
-            ShortPathType = shortPathType;
+            FullProjectPath = fullProjectPath;
             FromBuildSettings = fromBuildSettings;
             OnlyEnabled = onlyEnabled;
         }

@@ -10,11 +10,11 @@ namespace UnityForge
 
         private void Awake()
         {
-            // LoadScene method does not support full scene paths, only short
-            // paths w/o "Assets/" prefix and ".unity" extension. In this
-            // example attribute is used with default constructor parameters
-            // so shortPathType is set to true to get short scene path for field.
-            SceneManager.LoadScene(exampleScenePath, LoadSceneMode.Additive);
+            // LoadSceneAsync supports both full and short scene paths. In this
+            // example attribute is used with default constructor to get
+            // full scene path for field. This is to emphasize difference from
+            // LoadScene method which does not support full scene paths.
+            SceneManager.LoadSceneAsync(exampleScenePath, LoadSceneMode.Additive);
         }
     }
 }
