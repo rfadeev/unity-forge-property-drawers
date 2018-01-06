@@ -126,10 +126,20 @@ private string exampleTag;
 ![screencast](Documentation/scene-path-example.png)
 
 ### Attribute usage
-Add attribute to string field to enable selection of scene path value from dropdown list in Unity editor.
+Add attribute to string field to enable selection of scene path value from dropdown list in Unity editor. Path type can be set via `fullProjectPath` argument: if true, scene path will be full project path like "Assets/Scenes/MyScene.unity"; if false, path will be short project path without "Assets/" and ".unity" extension like "Scenes/MyScene". Source to populate dropdown can be set via `fromBuildSettings` argument: if true, only scenes from build settings will be shown in dropdown; if false, all scenes from project will be shown in dropdown. Additionally, `onlyEnabled` argument can be used to show only scenes enabled in build settings if `fromBuildSettings` is set to true.
 ```csharp
+// Full scene path, only enabled scenes from build settings
 [SerializeField, ScenePath]
-private string exampleScenePath;
+private string exampleScenePath01;
+// Short scene path, only enabled scenes from build settings
+[SerializeField, ScenePath(fullProjectPath: false))]
+private string exampleScenePath02;
+// Full scene path, all scenes from project
+[SerializeField, ScenePath(fromBuildSettings: false))]
+private string exampleScenePath03;
+// Short scene path, all scenes from build settings
+[SerializeField, ScenePath(fullProjectPath: false, onlyEnabled: false))]
+private string exampleScenePath04;
 ```
 
 [Examples of attribute usage](../master/Source/Examples/ScenePath)
