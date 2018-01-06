@@ -8,7 +8,7 @@ namespace UnityForge
 {
     public class ScenePathExample03 : MonoBehaviour
     {
-        [SerializeField, ScenePath(sceneManagerPathType: false, fromBuildSettings: false)]
+        [SerializeField, ScenePath(shortPathType: false, fromBuildSettings: false)]
         private string exampleScenePath;
 
 #if UNITY_EDITOR

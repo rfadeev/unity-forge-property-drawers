@@ -54,7 +54,7 @@ namespace UnityForge.Editor
                 scenePaths = Array.ConvertAll(assetGuids, x => AssetDatabase.GUIDToAssetPath(x));
             }
 
-            if (scenePathAttribute.SceneManagerPathType)
+            if (scenePathAttribute.ShortPathType)
             {
                 scenePaths = Array.ConvertAll(scenePaths, x =>
                 {

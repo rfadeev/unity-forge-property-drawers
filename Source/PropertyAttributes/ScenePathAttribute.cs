@@ -14,7 +14,7 @@ namespace UnityForge
         /// extension and can be used in SceneManager API. If false,
         /// path will be full project path.
         /// </summary>
-        public bool SceneManagerPathType { get; private set; }
+        public bool ShortPathType { get; private set; }
 
         /// <summary>
         /// If true, only scenes from build settings will be shown
@@ -31,9 +31,9 @@ namespace UnityForge
         /// </summary>
         public bool OnlyEnabled { get; private set; }
 
-        public ScenePathAttribute(bool sceneManagerPathType = true, bool fromBuildSettings = true, bool onlyEnabled = true)
+        public ScenePathAttribute(bool shortPathType = true, bool fromBuildSettings = true, bool onlyEnabled = true)
         {
-            SceneManagerPathType = sceneManagerPathType;
+            ShortPathType = shortPathType;
             FromBuildSettings = fromBuildSettings;
             OnlyEnabled = onlyEnabled;
         }
