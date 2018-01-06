@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityForge
 {
-    public class ScenePathExample02 : MonoBehaviour
+    public class ScenePathExample03 : MonoBehaviour
     {
         [SerializeField, ScenePath(sceneManagerPathType: false, fromBuildSettings: false)]
         private string exampleScenePath;
