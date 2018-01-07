@@ -1,20 +1,22 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-using UnityForge;
 
-[CustomPropertyDrawer(typeof(GameObjectTagAttribute))]
-public class GameObjectTagDrawer : PropertyDrawer
+namespace UnityForge.Editor
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(GameObjectTagAttribute))]
+    public class GameObjectTagDrawer : PropertyDrawer
     {
-        if (property.propertyType != SerializedPropertyType.String)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            position = EditorGUI.PrefixLabel(position, label);
-            EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(GameObjectTagAttribute), SerializedPropertyType.String));
-            return;
-        }
+            if (property.propertyType != SerializedPropertyType.String)
+            {
+                position = EditorGUI.PrefixLabel(position, label);
+                EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(GameObjectTagAttribute), SerializedPropertyType.String));
+                return;
+            }
 
-        property.stringValue = EditorGUI.TagField(position, label, property.stringValue);
+            property.stringValue = EditorGUI.TagField(position, label, property.stringValue);
+        }
     }
 }
