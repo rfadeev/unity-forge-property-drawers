@@ -24,9 +24,9 @@ namespace UnityForge
         public bool ResourcesRelative { get; private set; }
 
         /// <summary>
-        /// Show full path in the PropertyDrawer, not just the ObjectField.
+        /// Show asset path preview in the PropertyDrawer, not just the ObjectField.
         /// </summary>
-        public bool ShowFullPath { get; private set; }
+        public bool ShowPathPreview { get; private set; }
 
         /// <summary>
         /// Flags a field to be inspected as an object picker where only the
@@ -42,7 +42,7 @@ namespace UnityForge
         {
             AssetType = assetType;
             ResourcesRelative = resourcesRelative;
-            ShowFullPath = false;
+            ShowPathPreview = false;
         }
 
         /// <summary>
@@ -55,14 +55,14 @@ namespace UnityForge
         /// path will automatically be made relative to the resources directory
         /// and the extension will be removed.
         /// </param>
-        /// <param name="showFullPath">
-        /// Show full path in the PropertyDrawer, not just the ObjectField.
+        /// <param name="showPathPreview">
+        /// Show asset path preview in the PropertyDrawer, not just the ObjectField.
         /// </param>
-        public AssetPathAttribute(Type assetType, bool resourcesRelative, bool showFullPath)
+        public AssetPathAttribute(Type assetType, bool resourcesRelative, bool showPathPreview)
         {
             AssetType = assetType;
             ResourcesRelative = resourcesRelative;
-            ShowFullPath = showFullPath;
+            ShowPathPreview = showPathPreview;
         }
     }
 }

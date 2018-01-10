@@ -9,14 +9,14 @@ namespace UnityForge.Editor
     public class AssetPathDrawer : PropertyDrawer
     {
         private const string ResourcesFolderPath = "/Resources/";
-        private const int ShownPathHeight = 16;
+        private const int PathPreviewHeight = 16;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             var assetPathAttribute = (AssetPathAttribute)attribute;
-            if (assetPathAttribute.ShowFullPath)
+            if (assetPathAttribute.ShowPathPreview)
             {
-                position.height -= ShownPathHeight;
+                position.height -= PathPreviewHeight;
             }
 
             if (!IsPropertyTypeValid(property))
@@ -68,20 +68,19 @@ namespace UnityForge.Editor
                 }
             }
 
-            if (assetPathAttribute.ShowFullPath)
+            if (assetPathAttribute.ShowPathPreview)
             {
-                position.y += ShownPathHeight;
+                position.y += PathPreviewHeight;
                 position = EditorGUI.PrefixLabel(position, new GUIContent("  Asset Path Preview"));
-
                 EditorGUI.LabelField(position, String.Format("\"{0}\"", assetPath));
             }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            if (IsPropertyTypeValid(property) && ((AssetPathAttribute)attribute).ShowFullPath)
+            if (IsPropertyTypeValid(property) && ((AssetPathAttribute)attribute).ShowPathPreview)
             {
-                return base.GetPropertyHeight(property, label) + ShownPathHeight;
+                return base.GetPropertyHeight(property, label) + PathPreviewHeight;
             }
             else
             {
