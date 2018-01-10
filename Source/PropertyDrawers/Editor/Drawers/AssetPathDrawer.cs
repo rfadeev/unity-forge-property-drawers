@@ -9,17 +9,23 @@ namespace UnityForge.Editor
     public class AssetPathDrawer : PropertyDrawer
     {
         private const string ResourcesFolderPath = "/Resources/";
+        private const int ShownPathHeight = 16;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.propertyType != SerializedPropertyType.String)
+            var assetPathAttribute = (AssetPathAttribute)attribute;
+            if (assetPathAttribute.ShowFullPath)
+            {
+                position.height -= ShownPathHeight;
+            }
+
+            if (!IsPropertyTypeValid(property))
             {
                 position = EditorGUI.PrefixLabel(position, label);
                 EditorGUI.LabelField(position, String.Format("Error: {0} attribute can be applied only to {1} type", typeof(AssetPathAttribute), SerializedPropertyType.String));
                 return;
             }
 
-            var assetPathAttribute = (AssetPathAttribute)attribute;
             var assetPath = property.stringValue;
             UnityEngine.Object asset = null;
             if (!String.IsNullOrEmpty(assetPath))
@@ -54,7 +60,6 @@ namespace UnityForge.Editor
                                 .Replace(Path.GetExtension(assetPath), String.Empty);
                             property.stringValue = assetPath;
                         }
-
                     }
                     else
                     {
@@ -63,10 +68,30 @@ namespace UnityForge.Editor
                 }
             }
 
-            // TODO: [rfadeev] - Support showing asset path
             if (assetPathAttribute.ShowFullPath)
             {
+                position.y += ShownPathHeight;
+                position = EditorGUI.PrefixLabel(position, new GUIContent("  Asset Path Preview"));
+
+                EditorGUI.LabelField(position, String.Format("\"{0}\"", assetPath));
             }
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            if (IsPropertyTypeValid(property) && ((AssetPathAttribute)attribute).ShowFullPath)
+            {
+                return base.GetPropertyHeight(property, label) + ShownPathHeight;
+            }
+            else
+            {
+                return base.GetPropertyHeight(property, label);
+            }
+        }
+
+        private bool IsPropertyTypeValid(SerializedProperty property)
+        {
+            return property.propertyType == SerializedPropertyType.String;
         }
     }
 }

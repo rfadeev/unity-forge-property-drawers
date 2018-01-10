@@ -4,15 +4,23 @@ namespace UnityForge
 {
     public class AssetPathExample01 : MonoBehaviour
     {
+        [Header("Fields without path preview")]
         [SerializeField, AssetPath(typeof(Sprite), false)]
-        private string spriteProjectPath;
+        private string spriteProjectPath01;
         [SerializeField, AssetPath(typeof(Sprite), true)]
-        private string spriteResourcesPath;
+        private string spriteResourcesPath01;
+        [Header("Fields with path preview")]
+        [SerializeField, AssetPath(typeof(Sprite), false, true)]
+        private string spriteProjectPath02;
+        [SerializeField, AssetPath(typeof(Sprite), true, true)]
+        private string spriteResourcesPath02;
 
         private void Awake()
         {
-            Debug.LogFormat("spriteProjectPath {0}", spriteProjectPath);
-            Debug.LogFormat("spriteResourcesPath {0}", spriteResourcesPath);
+            Debug.LogFormat("spriteProjectPath01 {0}", spriteProjectPath01);
+            Debug.LogFormat("spriteResourcesPath01 {0}", spriteResourcesPath01);
+            Debug.LogFormat("spriteProjectPath02 {0}", spriteProjectPath02);
+            Debug.LogFormat("spriteResourcesPath02 {0}", spriteResourcesPath02);
         }
     }
 }
