@@ -1,4 +1,5 @@
-# Unity Forge Property Drawers [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](http://mit-license.org)
+[![license](https://img.shields.io/github/license/rfadeev/unity-forge-property-drawers.svg)](https://github.com/rfadeev/unity-forge-property-drawers/blob/master/LICENSE.md)
+# Unity Forge Property Drawers
 Custom propery drawers to ease fields value management in Unity editor.
 
 ## Attributes list
@@ -6,6 +7,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [AnimatorLayerName](#animatorlayername)
 * [AnimatorParameterName](#animatorparametername)
 * [AnimatorStateName](#animatorstatename)
+* [AssetPath](#assetpath)
 * [GameObjectLayer](#gameobjectlayer)
 * [GameObjectTag](#gameobjecttag)
 * [ScenePath](#scenepath)
@@ -99,6 +101,22 @@ private string exampleStateName;
 
 ### Caveats
 Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animator.Play.html) from animator state name in Unity API, state name alone does not determine state and state index value should be managed separately. If only one animation layer is used, it's not the problem and `Play(string stateName)` overload can be used safely for fields using `AnimatorStateName` attribute.
+
+## AssetPath
+![screencast](Documentation/asset-path-example.png)
+
+### Attribute usage
+Add attribute to string field to enable show object field instead of text input for object path. Object selection updates serialized value of the string field. Attribute declataion requires object type. Attribute supports both full project path (like "Assets/Sprites/MySpriteA.png") and resources path type (like "Sprites/MySpriteB" for full path value "Assets/Resources/Sprites/MySpriteB.png"). Additionnal option allows to preview path value which is serialized.
+```csharp
+[SerializeField, AssetPath(typeof(Sprite), false)]
+private string spriteProjectPath01;
+[SerializeField, AssetPath(typeof(Sprite), true)]
+private string spriteResourcesPath01;
+[SerializeField, AssetPath(typeof(Sprite), false, true)]
+private string spriteProjectPath02;
+[SerializeField, AssetPath(typeof(Sprite), true, true)]
+private string spriteResourcesPath02;
+```
 
 ## GameObjectLayer
 ![screencast](Documentation/game-object-layer-example.png)

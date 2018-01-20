@@ -5,7 +5,7 @@ namespace UnityForge
 {
     /// <summary>
     /// An attribute that can be placed on a string field to make it appear in
-    /// the inspector as an object picker for the specified typeand the
+    /// the inspector as an object picker for the specified type and the
     /// selected objects path will be saved to the string field.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
