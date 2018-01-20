@@ -38,7 +38,7 @@ private string animationName;
 [Examples of attribute usage](../master/Source/Examples/AnimationName)
 
 ### Caveats
-Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtilityGetAnimationClips.html) differs from the one displayed in the editor for Animation comoponent. Due to this expect different order of items in dropdown list for attribute.
+Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtility.GetAnimationClips.html) differs from the one displayed in the editor for Animation comoponent. Due to this expect different order of items in dropdown list for attribute.
 
 ## AnimatorLayerName
 ![screencast](Documentation/animator-layer-name-example.png)
@@ -117,6 +117,8 @@ private string spriteProjectPath02;
 [SerializeField, AssetPath(typeof(Sprite), true, true)]
 private string spriteResourcesPath02;
 ```
+
+[Examples of attribute usage](../master/Source/Examples/AssetPath)
 
 ## GameObjectLayer
 ![screencast](Documentation/game-object-layer-example.png)
