@@ -21,7 +21,7 @@ Project supports Unity Package Manager. To install project as Git package do fol
 ```json
 {
   "dependencies": {
-    "com.rfadeev.unityforge.propertydrawers": "https://github.com/rfadeev/unity-forge-property-drawers"
+    "com.rfadeev.unityforge.propertydrawers": "https://github.com/rfadeev/unity-forge-property-drawers.git"
   }
 }
 ```
