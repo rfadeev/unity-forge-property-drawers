@@ -8,8 +8,10 @@ namespace UnityForge
 {
     public class ScenePathExample03 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField, ScenePath(fromBuildSettings: false)]
         private string exampleScenePath;
+#pragma warning restore 0649
 
 #if UNITY_EDITOR
         [ContextMenu("Open Scene At Path")]

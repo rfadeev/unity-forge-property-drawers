@@ -4,11 +4,13 @@ namespace UnityForge
 {
     public class AnimatorStateNameExample02 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField]
         private Animator exampleAnimator;
 
         [SerializeField, AnimatorStateName(animatorField: "exampleAnimator")]
         private string stateName;
+#pragma warning restore 0649
 
         private void Start()
         {

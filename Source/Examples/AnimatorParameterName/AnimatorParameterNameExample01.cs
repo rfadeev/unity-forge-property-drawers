@@ -5,6 +5,7 @@ namespace UnityForge
     [RequireComponent(typeof(Animator))]
     public class AnimatorParameterNameExample01 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField, AnimatorParameterName(AnimatorControllerParameterType.Float)]
         private string exampleFloatParameterName;
 
@@ -16,6 +17,7 @@ namespace UnityForge
 
         [SerializeField, AnimatorParameterName(AnimatorControllerParameterType.Trigger)]
         private string exampleTriggerParameterName;
+#pragma warning restore 0649
 
         private void Start()
         {

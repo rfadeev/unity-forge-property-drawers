@@ -5,8 +5,10 @@ namespace UnityForge
 {
     public class ScenePathExample01 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField, ScenePath]
         private string exampleScenePath;
+#pragma warning restore 0649
 
         private void Awake()
         {

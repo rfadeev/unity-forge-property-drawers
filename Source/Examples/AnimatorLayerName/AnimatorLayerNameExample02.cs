@@ -4,6 +4,7 @@ namespace UnityForge
 {
     public class AnimatorLayerNameExample02 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField]
         private Animator exampleAnimator;
 
@@ -12,6 +13,7 @@ namespace UnityForge
 
         [SerializeField, AnimatorLayerName(animatorField: "exampleAnimator")]
         private string layerName;
+#pragma warning restore 0649
 
         private void Start()
         {

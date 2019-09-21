@@ -4,6 +4,7 @@ namespace UnityForge
 {
     public class AssetPathExample01 : MonoBehaviour
     {
+#pragma warning disable 0649
         [Header("Fields without path preview")]
         [SerializeField, AssetPath(typeof(Sprite), false)]
         private string spriteProjectPath01;
@@ -14,6 +15,7 @@ namespace UnityForge
         private string spriteProjectPath02;
         [SerializeField, AssetPath(typeof(Sprite), true, true)]
         private string spriteResourcesPath02;
+#pragma warning restore 0649
 
         private void Awake()
         {

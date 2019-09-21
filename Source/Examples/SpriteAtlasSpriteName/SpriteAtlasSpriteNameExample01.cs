@@ -7,12 +7,14 @@ namespace UnityForge
 {
     public class SpriteAtlasSpriteNameExample01 : MonoBehaviour
     {
+#pragma warning disable 0649
         [SerializeField]
         private SpriteAtlas atlas;
         [SerializeField, SpriteAtlasSpriteName(spriteAtlasField: "atlas")]
         private string spriteName;
         [SerializeField]
         private SpriteRenderer spriteRenderer;
+#pragma warning restore 0649
 
         private void Update()
         {
