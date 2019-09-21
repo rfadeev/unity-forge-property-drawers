@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class AnimatorLayerNameAttribute : AnimatorPropertyAttribute

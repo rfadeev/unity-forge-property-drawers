@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     [CustomPropertyDrawer(typeof(SortingLayerNameAttribute))]
     public class SortingLayerNameDrawer : PropertyDrawer

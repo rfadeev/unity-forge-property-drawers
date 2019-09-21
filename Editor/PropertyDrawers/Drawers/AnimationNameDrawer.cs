@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     [CustomPropertyDrawer(typeof(AnimationNameAttribute))]
     public class AnimationNameDrawer : ComponentFieldPropertyDrawer<AnimationNameAttribute, Animation>

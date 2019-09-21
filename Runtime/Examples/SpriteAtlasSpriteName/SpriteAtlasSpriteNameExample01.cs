@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.U2D;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class SpriteAtlasSpriteNameExample01 : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     [CustomPropertyDrawer(typeof(AnimatorLayerNameAttribute))]
     public class AnimatorLayerNameDrawer : RuntimeAnimatorControllerPropertyDrawer<AnimatorLayerNameAttribute>

@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     // Base class for custom property drawers of animator controller linked in Animator component. This property drawer is not
     // designed to be used on naked animator controller which is editor entity, if such property drawer is needed,

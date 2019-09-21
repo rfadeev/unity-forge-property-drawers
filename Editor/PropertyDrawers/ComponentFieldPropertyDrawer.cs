@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     /// <summary>
     /// Base class for property drawers for string properties which require component of specific type

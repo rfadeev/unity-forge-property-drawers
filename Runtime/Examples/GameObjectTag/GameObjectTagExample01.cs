@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class GameObjectTagExample01 : MonoBehaviour
     {

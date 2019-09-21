@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class AnimatorPropertyAttribute : PropertyAttribute
     {

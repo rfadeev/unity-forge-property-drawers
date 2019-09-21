@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class AnimatorStateNameExample02 : MonoBehaviour
     {

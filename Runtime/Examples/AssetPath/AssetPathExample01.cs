@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class AssetPathExample01 : MonoBehaviour
     {

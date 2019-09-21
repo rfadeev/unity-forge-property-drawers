@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     public struct StringPropertyPair
     {

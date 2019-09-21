@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.U2D;
 
-namespace UnityForge.Editor
+namespace UnityForge.PropertyDrawers.Editor
 {
     [CustomPropertyDrawer(typeof(SpriteAtlasSpriteNameAttribute))]
     public class SpriteAtlasSpriteNameDrawer : PropertyDrawer

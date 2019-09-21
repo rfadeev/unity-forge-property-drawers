@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class SortingLayerNameAttribute : PropertyAttribute

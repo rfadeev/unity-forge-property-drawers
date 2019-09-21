@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     public class ScenePathExample02 : MonoBehaviour
     {

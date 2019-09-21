@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     [RequireComponent(typeof(Animator))]
     public class AnimatorParameterNameExample01 : MonoBehaviour

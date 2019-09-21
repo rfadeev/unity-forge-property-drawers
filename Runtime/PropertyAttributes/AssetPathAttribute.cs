@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UnityForge
+namespace UnityForge.PropertyDrawers
 {
     /// <summary>
     /// An attribute that can be placed on a string field to make it appear in

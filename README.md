@@ -15,7 +15,7 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [SpriteAtlasSpriteName](#spriteatlasspritename)
 
 ## Attributes usage
-Import `UnityForge` namespace to be able to use attribute from the [attributes list](#attributes-list).
+Import `UnityForge.PropertyDrawers` namespace to be able to use attribute from the [attributes list](#attributes-list).
 
 ## AnimationName
 ![screencast](Documentation/animation-name-example.png)
