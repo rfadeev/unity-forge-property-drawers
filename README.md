@@ -14,6 +14,21 @@ Custom propery drawers to ease fields value management in Unity editor.
 * [SortingLayerName](#sortinglayername)
 * [SpriteAtlasSpriteName](#spriteatlasspritename)
 
+## Installation
+Project supports Unity Package Manager. To install project as Git package do following:
+1. Close Unity project and open the `Packages/manifest.json` file.
+2. Update `dependencies` to have `com.rfadeev.unityforge.propertydrawers` package:
+```json
+{
+  "dependencies": {
+    "com.rfadeev.unityforge.propertydrawers": "https://github.com/rfadeev/unity-forge-property-drawers"
+  }
+}
+```
+3. Open Unity project.
+
+Alternatively, add this repository as submodule under `Assets` folder or download it and put to `Assets` folder of your Unity project. 
+
 ## Attributes usage
 Import `UnityForge.PropertyDrawers` namespace to be able to use attribute from the [attributes list](#attributes-list).
 
