@@ -50,7 +50,7 @@ private Animation exampleAnimation;
 private string animationName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/AnimationName)
+[Examples of attribute usage](../master/Runtime/Examples/AnimationName)
 
 ### Caveats
 Unity manages clips internally specifically so for some reason order of clips returned by [AnimationUtility.GetAnimationClips](https://docs.unity3d.com/ScriptReference/AnimationUtility.GetAnimationClips.html) differs from the one displayed in the editor for Animation comoponent. Due to this expect different order of items in dropdown list for attribute.
@@ -72,7 +72,7 @@ private Animator exampleAnimator;
 private string exampleLayerName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/AnimatorLayerName)
+[Examples of attribute usage](../master/Runtime/Examples/AnimatorLayerName)
 
 ## AnimatorParameterName
 ![screencast](Documentation/animator-parameter-name-example.png)
@@ -92,7 +92,7 @@ private Animator exampleAnimator;
 private string exampleFloatParameterName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/AnimatorParameterName)
+[Examples of attribute usage](../master/Runtime/Examples/AnimatorParameterName)
 
 ## AnimatorStateName
 ![screencast](Documentation/animator-state-name-example.gif)
@@ -112,7 +112,7 @@ private Animator exampleAnimator;
 private string exampleStateName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/AnimatorStateName)
+[Examples of attribute usage](../master/Runtime/Examples/AnimatorStateName)
 
 ### Caveats
 Since layer index is [decoupled](https://docs.unity3d.com/ScriptReference/Animator.Play.html) from animator state name in Unity API, state name alone does not determine state and state index value should be managed separately. If only one animation layer is used, it's not the problem and `Play(string stateName)` overload can be used safely for fields using `AnimatorStateName` attribute.
@@ -133,7 +133,7 @@ private string spriteProjectPath02;
 private string spriteResourcesPath02;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/AssetPath)
+[Examples of attribute usage](../master/Runtime/Examples/AssetPath)
 
 ## GameObjectLayer
 ![screencast](Documentation/game-object-layer-example.png)
@@ -144,7 +144,7 @@ Add attribute to int field to enable selection of game object layer value from d
 [SerializeField, GameObjectLayer]
 private int exampleLayer;
 ```
-[Examples of attribute usage](../master/Source/Examples/GameObjectLayer)
+[Examples of attribute usage](../master/Runtime/Examples/GameObjectLayer)
 
 ## GameObjectTag
 ![screencast](Documentation/game-object-tag-example.png)
@@ -155,7 +155,7 @@ Add attribute to string field to enable selection of game object tag value from 
 [SerializeField, GameObjectTag]
 private string exampleTag;
 ```
-[Examples of attribute usage](../master/Source/Examples/GameObjectTag)
+[Examples of attribute usage](../master/Runtime/Examples/GameObjectTag)
 
 ## ScenePath
 ![screencast](Documentation/scene-path-example.png)
@@ -177,7 +177,7 @@ private string exampleScenePath03;
 private string exampleScenePath04;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/ScenePath)
+[Examples of attribute usage](../master/Runtime/Examples/ScenePath)
 
 ## SortingLayerName
 ![screencast](Documentation/sorting-layer-name-example.png)
@@ -189,7 +189,7 @@ Add attribute to string field to enable selection of sorting layer name value fr
 private string exampleSortingLayerName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/SortingLayerName)
+[Examples of attribute usage](../master/Runtime/Examples/SortingLayerName)
 
 ## SpriteAtlasSpriteName
 ![screencast](Documentation/sprite-atlas-sprite-name-example.png)
@@ -203,4 +203,4 @@ private SpriteAtlas atlas;
 private string spriteName;
 ```
 
-[Examples of attribute usage](../master/Source/Examples/SpriteAtlasSpriteName)
+[Examples of attribute usage](../master/Runtime/Examples/SpriteAtlasSpriteName)
